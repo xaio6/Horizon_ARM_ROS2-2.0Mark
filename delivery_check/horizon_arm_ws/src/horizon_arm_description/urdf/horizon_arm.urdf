@@ -1,0 +1,170 @@
+<?xml version="1.0"?>
+<robot name="horizon_arm">
+  <material name="horizon_dark">
+    <color rgba="0.13 0.15 0.17 1.0"/>
+  </material>
+  <material name="horizon_light">
+    <color rgba="0.78 0.82 0.86 1.0"/>
+  </material>
+
+  <link name="base_link">
+    <visual>
+      <geometry>
+        <mesh filename="package://horizon_arm_description/meshes/base_link.STL"/>
+      </geometry>
+      <material name="horizon_dark"/>
+    </visual>
+    <collision>
+      <geometry>
+        <mesh filename="package://horizon_arm_description/meshes/base_link.STL"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <link name="Link_1">
+    <visual>
+      <geometry>
+        <mesh filename="package://horizon_arm_description/meshes/Link_1.STL"/>
+      </geometry>
+      <material name="horizon_light"/>
+    </visual>
+    <collision>
+      <geometry>
+        <mesh filename="package://horizon_arm_description/meshes/Link_1.STL"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <link name="Link_2">
+    <visual>
+      <geometry>
+        <mesh filename="package://horizon_arm_description/meshes/Link_2.STL"/>
+      </geometry>
+      <material name="horizon_light"/>
+    </visual>
+    <collision>
+      <geometry>
+        <mesh filename="package://horizon_arm_description/meshes/Link_2.STL"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <link name="Link_3">
+    <visual>
+      <geometry>
+        <mesh filename="package://horizon_arm_description/meshes/Link_3.STL"/>
+      </geometry>
+      <material name="horizon_light"/>
+    </visual>
+    <collision>
+      <geometry>
+        <mesh filename="package://horizon_arm_description/meshes/Link_3.STL"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <link name="Link_4">
+    <visual>
+      <geometry>
+        <mesh filename="package://horizon_arm_description/meshes/Link_4.STL"/>
+      </geometry>
+      <material name="horizon_dark"/>
+    </visual>
+    <collision>
+      <geometry>
+        <mesh filename="package://horizon_arm_description/meshes/Link_4.STL"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <link name="Link_5">
+    <visual>
+      <geometry>
+        <mesh filename="package://horizon_arm_description/meshes/Link_5.STL"/>
+      </geometry>
+      <material name="horizon_dark"/>
+    </visual>
+    <collision>
+      <geometry>
+        <mesh filename="package://horizon_arm_description/meshes/Link_5.STL"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <link name="Link_6">
+    <visual>
+      <geometry>
+        <mesh filename="package://horizon_arm_description/meshes/Link_6.STL"/>
+      </geometry>
+      <material name="horizon_dark"/>
+    </visual>
+    <collision>
+      <geometry>
+        <mesh filename="package://horizon_arm_description/meshes/Link_6.STL"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <link name="tool0"/>
+  <link name="tcp_link"/>
+
+  <joint name="joint_1" type="revolute">
+    <origin xyz="0 0 0.0935" rpy="0 0 -3.1416"/>
+    <parent link="base_link"/>
+    <child link="Link_1"/>
+    <axis xyz="0 0 1"/>
+    <limit lower="-2.094395" upper="2.094395" effort="10.0" velocity="1.5"/>
+  </joint>
+
+  <joint name="joint_2" type="revolute">
+    <origin xyz="0 0 0.037" rpy="1.5708 -1.5708 0"/>
+    <parent link="Link_1"/>
+    <child link="Link_2"/>
+    <axis xyz="0 0 1"/>
+    <limit lower="-1.047198" upper="1.047198" effort="10.0" velocity="1.5"/>
+  </joint>
+
+  <joint name="joint_3" type="revolute">
+    <origin xyz="0.23441 -0.00016737 0" rpy="0 0 0"/>
+    <parent link="Link_2"/>
+    <child link="Link_3"/>
+    <axis xyz="0 0 1"/>
+    <limit lower="-1.047198" upper="1.047198" effort="10.0" velocity="1.5"/>
+  </joint>
+
+  <joint name="joint_4" type="revolute">
+    <origin xyz="0.047976 0.10644 0" rpy="-1.5708 0 0"/>
+    <parent link="Link_3"/>
+    <child link="Link_4"/>
+    <axis xyz="0 0 1"/>
+    <limit lower="-2.792527" upper="2.792527" effort="8.0" velocity="2.0"/>
+  </joint>
+
+  <joint name="joint_5" type="revolute">
+    <origin xyz="0 0 0.094" rpy="1.5708 0 0"/>
+    <parent link="Link_4"/>
+    <child link="Link_5"/>
+    <axis xyz="0 0 1"/>
+    <limit lower="-1.570796" upper="1.570796" effort="8.0" velocity="2.0"/>
+  </joint>
+
+  <joint name="joint_6" type="revolute">
+    <origin xyz="0 0.1194 0" rpy="-1.5708 0 0"/>
+    <parent link="Link_5"/>
+    <child link="Link_6"/>
+    <axis xyz="0 0 1"/>
+    <limit lower="-2.792527" upper="2.792527" effort="8.0" velocity="2.0"/>
+  </joint>
+
+  <joint name="tool0_fixed_joint" type="fixed">
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <parent link="Link_6"/>
+    <child link="tool0"/>
+  </joint>
+
+  <joint name="tcp_fixed_joint" type="fixed">
+    <origin xyz="0 0.015 0.09925" rpy="0 0 0"/>
+    <parent link="tool0"/>
+    <child link="tcp_link"/>
+  </joint>
+</robot>

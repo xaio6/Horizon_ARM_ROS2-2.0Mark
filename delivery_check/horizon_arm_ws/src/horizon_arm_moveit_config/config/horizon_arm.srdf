@@ -1,0 +1,116 @@
+<?xml version="1.0"?>
+<robot name="horizon_arm">
+  <group name="arm">
+    <chain base_link="base_link" tip_link="tcp_link"/>
+  </group>
+
+  <group_state name="home" group="arm">
+    <joint name="joint_1" value="0.0"/>
+    <joint name="joint_2" value="0.0"/>
+    <joint name="joint_3" value="0.0"/>
+    <joint name="joint_4" value="0.0"/>
+    <joint name="joint_5" value="0.0"/>
+    <joint name="joint_6" value="0.0"/>
+  </group_state>
+
+  <group_state name="home_position" group="arm">
+    <joint name="joint_1" value="0.0"/>
+    <joint name="joint_2" value="0.0"/>
+    <joint name="joint_3" value="0.0"/>
+    <joint name="joint_4" value="0.0"/>
+    <joint name="joint_5" value="0.0"/>
+    <joint name="joint_6" value="0.0"/>
+  </group_state>
+
+  <group_state name="initial_position" group="arm">
+    <joint name="joint_1" value="0.0"/>
+    <joint name="joint_2" value="0.0"/>
+    <joint name="joint_3" value="0.0"/>
+    <joint name="joint_4" value="0.0"/>
+    <joint name="joint_5" value="0.0"/>
+    <joint name="joint_6" value="0.0"/>
+  </group_state>
+
+  <group_state name="nod_wrist_left" group="arm">
+    <joint name="joint_1" value="0.0"/>
+    <joint name="joint_2" value="0.0"/>
+    <joint name="joint_3" value="0.0"/>
+    <joint name="joint_4" value="0.0"/>
+    <joint name="joint_5" value="-0.523599"/>
+    <joint name="joint_6" value="0.0"/>
+  </group_state>
+
+  <group_state name="wrist_left" group="arm">
+    <joint name="joint_1" value="0.0"/>
+    <joint name="joint_2" value="0.0"/>
+    <joint name="joint_3" value="0.0"/>
+    <joint name="joint_4" value="0.0"/>
+    <joint name="joint_5" value="-0.523599"/>
+    <joint name="joint_6" value="0.0"/>
+  </group_state>
+
+  <group_state name="nod_wrist_right" group="arm">
+    <joint name="joint_1" value="0.0"/>
+    <joint name="joint_2" value="0.0"/>
+    <joint name="joint_3" value="0.0"/>
+    <joint name="joint_4" value="0.0"/>
+    <joint name="joint_5" value="0.523599"/>
+    <joint name="joint_6" value="0.0"/>
+  </group_state>
+
+  <group_state name="wrist_right" group="arm">
+    <joint name="joint_1" value="0.0"/>
+    <joint name="joint_2" value="0.0"/>
+    <joint name="joint_3" value="0.0"/>
+    <joint name="joint_4" value="0.0"/>
+    <joint name="joint_5" value="0.523599"/>
+    <joint name="joint_6" value="0.0"/>
+  </group_state>
+
+  <group_state name="shake_base_left" group="arm">
+    <joint name="joint_1" value="0.523599"/>
+    <joint name="joint_2" value="0.0"/>
+    <joint name="joint_3" value="0.0"/>
+    <joint name="joint_4" value="0.0"/>
+    <joint name="joint_5" value="0.0"/>
+    <joint name="joint_6" value="0.0"/>
+  </group_state>
+
+  <group_state name="base_left" group="arm">
+    <joint name="joint_1" value="0.523599"/>
+    <joint name="joint_2" value="0.0"/>
+    <joint name="joint_3" value="0.0"/>
+    <joint name="joint_4" value="0.0"/>
+    <joint name="joint_5" value="0.0"/>
+    <joint name="joint_6" value="0.0"/>
+  </group_state>
+
+  <group_state name="shake_base_right" group="arm">
+    <joint name="joint_1" value="-0.523599"/>
+    <joint name="joint_2" value="0.0"/>
+    <joint name="joint_3" value="0.0"/>
+    <joint name="joint_4" value="0.0"/>
+    <joint name="joint_5" value="0.0"/>
+    <joint name="joint_6" value="0.0"/>
+  </group_state>
+
+  <group_state name="base_right" group="arm">
+    <joint name="joint_1" value="-0.523599"/>
+    <joint name="joint_2" value="0.0"/>
+    <joint name="joint_3" value="0.0"/>
+    <joint name="joint_4" value="0.0"/>
+    <joint name="joint_5" value="0.0"/>
+    <joint name="joint_6" value="0.0"/>
+  </group_state>
+
+  <virtual_joint name="world_joint" type="fixed" parent_frame="world" child_link="base_link"/>
+
+  <disable_collisions link1="base_link" link2="Link_1" reason="Adjacent"/>
+  <disable_collisions link1="Link_1" link2="Link_2" reason="Adjacent"/>
+  <disable_collisions link1="Link_2" link2="Link_3" reason="Adjacent"/>
+  <disable_collisions link1="Link_3" link2="Link_4" reason="Adjacent"/>
+  <disable_collisions link1="Link_4" link2="Link_5" reason="Adjacent"/>
+  <disable_collisions link1="Link_5" link2="Link_6" reason="Adjacent"/>
+  <disable_collisions link1="Link_6" link2="tool0" reason="Adjacent"/>
+  <disable_collisions link1="tool0" link2="tcp_link" reason="Adjacent"/>
+</robot>

@@ -1,0 +1,5 @@
+bool open
+int32 current_ma
+---
+bool success
+string message

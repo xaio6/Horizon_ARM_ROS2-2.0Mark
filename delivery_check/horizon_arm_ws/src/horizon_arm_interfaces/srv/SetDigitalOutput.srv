@@ -1,0 +1,6 @@
+uint8 channel
+bool state
+---
+bool success
+string message
+

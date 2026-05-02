@@ -1,0 +1,8 @@
+string command
+string target_class
+float32 conf_thres
+float32 interval_sec
+---
+bool success
+bool running
+string message

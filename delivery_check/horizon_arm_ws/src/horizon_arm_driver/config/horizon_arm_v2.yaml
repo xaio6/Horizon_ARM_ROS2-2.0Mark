@@ -1,0 +1,32 @@
+horizon_arm_driver:
+  ros__parameters:
+    hardware_enabled: false
+    sdk_root: ""
+    port: "/dev/ttyUSB0"
+    baudrate: 115200
+    state_publish_rate_hz: 5.0
+    hardware_read_rate_hz: 1.0
+    hardware_read_error_backoff_sec: 2.5
+    status_publish_rate_hz: 1.0
+    trajectory_timeout_ms: 5000
+    trajectory_debug_logging: true
+    execution_goal_tolerance_deg: 3.0
+    execution_noop_threshold_deg: 0.2
+    execution_state_check_period_sec: 0.2
+    execution_settle_timeout_sec: 2.0
+    emergency_stop_on_execute_error: false
+
+    joint_names:
+      - "joint_1"
+      - "joint_2"
+      - "joint_3"
+      - "joint_4"
+      - "joint_5"
+      - "joint_6"
+
+    motor_ids: [1, 2, 3, 4, 5, 6]
+    reducer_ratios: [50.0, 50.0, 50.0, 30.0, 30.0, 30.0]
+    directions: [-1, 1, 1, -1, 1, -1]
+    zero_offsets_deg: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+    joint_limits_min_deg: [-120.0, -60.0, -60.0, -160.0, -90.0, -160.0]
+    joint_limits_max_deg: [120.0, 60.0, 60.0, 160.0, 90.0, 160.0]

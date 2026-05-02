@@ -1,0 +1,21 @@
+tcp_offset_mm:
+  - 0.0
+  - 15.0
+  - 99.25
+
+workspace_limits_mm:
+  min_radius: 50.0
+  max_radius: 600.0
+  min_z: -200.0
+  max_z: 600.0
+
+tool_collision:
+  enabled: false
+  size_mm:
+    - 40.0
+    - 40.0
+    - 120.0
+  center_offset_mm:
+    - 0.0
+    - 15.0
+    - 60.0

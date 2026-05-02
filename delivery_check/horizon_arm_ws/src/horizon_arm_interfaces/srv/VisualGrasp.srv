@@ -1,0 +1,11 @@
+bool dry_run
+bool use_bbox
+float32 u
+float32 v
+float32 x1
+float32 y1
+float32 x2
+float32 y2
+---
+bool success
+string message
