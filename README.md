@@ -23,5 +23,5 @@ ros2 run horizon_arm_control system_check --ros-args \
 
 ## 文档
 
-- [部署说明](./docs/部署说明.md)
-- [ROS2 SDK 开发接口](./docs/05_ROS2_SDK开发接口.md)
+- [部署说明](./delivery_check/horizon_arm_ws/docs/部署说明.md)
+- [ROS2 SDK 开发接口](.delivery_check/horizon_arm_ws//docs/05_ROS2_SDK开发接口.md)
