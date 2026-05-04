@@ -1,6 +1,9 @@
+from glob import glob
+
 from setuptools import find_packages, setup
 
 package_name = "horizon_arm_control"
+example_files = glob("examples/*.py")
 
 setup(
     name=package_name,
@@ -9,7 +12,13 @@ setup(
     data_files=[
         ("share/ament_index/resource_index/packages", [f"resource/{package_name}"]),
         (f"share/{package_name}", ["package.xml"]),
-    ],
+        (f"share/{package_name}", ["README.md"]),
+    ]
+    + (
+        [(f"share/{package_name}/examples", example_files)]
+        if example_files
+        else []
+    ),
     install_requires=["setuptools"],
     zip_safe=True,
     maintainer="Horizon Arm Team",
@@ -24,6 +33,7 @@ setup(
             "follow_grasp_server = horizon_arm_control.follow_grasp_server:main",
             "joycon_server = horizon_arm_control.joycon_server:main",
             "embodied_server = horizon_arm_control.embodied_server:main",
+            "teaching_server = horizon_arm_control.teaching_server:main",
             "run_instruction_server = horizon_arm_control.run_instruction_server:main",
             "run_instruction_client = horizon_arm_control.run_instruction_client:main",
             "system_check = horizon_arm_control.system_check:main",

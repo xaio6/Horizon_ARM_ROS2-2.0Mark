@@ -1,0 +1,16 @@
+string pipeline
+string target_class
+float32 conf_thres
+bool use_hsv
+bool use_depth
+float32 depth_min_m
+float32 depth_max_m
+---
+bool success
+int32 count
+float32[] bboxes
+float32[] centers
+float32[] scores
+string[] class_names
+float32[] depths_m
+string message

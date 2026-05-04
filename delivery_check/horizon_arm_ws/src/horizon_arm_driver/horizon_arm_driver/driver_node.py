@@ -636,13 +636,24 @@ class HorizonArmDriverNode(Node):
 def main(args=None) -> None:
     rclpy.init(args=args)
     node = HorizonArmDriverNode()
+    spin_node_until_shutdown(node, lambda: rclpy.spin(node))
+
+
+def spin_node_until_shutdown(node, spin) -> None:
     try:
-        rclpy.spin(node)
-    except KeyboardInterrupt:
+        spin()
+    except (KeyboardInterrupt, rclpy.executors.ExternalShutdownException):
         pass
     finally:
-        node.destroy_node()
-        rclpy.shutdown()
+        try:
+            node.destroy_node()
+        except Exception:
+            pass
+        if rclpy.ok():
+            try:
+                rclpy.shutdown()
+            except Exception:
+                pass
 
 
 if __name__ == "__main__":

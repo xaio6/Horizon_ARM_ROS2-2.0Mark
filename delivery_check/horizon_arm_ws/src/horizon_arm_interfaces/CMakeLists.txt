@@ -15,11 +15,20 @@ set(srv_files
   "srv/VisualGrasp.srv"
   "srv/FollowGraspControl.srv"
   "srv/JoyconControl.srv"
+  "srv/JoyconAdvancedControl.srv"
   "srv/EmbodiedInstruction.srv"
+  "srv/EmbodiedCommand.srv"
+  "srv/TeachJog.srv"
+  "srv/VisionConfig.srv"
+  "srv/PickHSV.srv"
+  "srv/DetectTarget.srv"
+  "srv/VisualGraspEx.srv"
+  "srv/FollowTarget.srv"
 )
 
 set(action_files
   "action/RunInstruction.action"
+  "action/TeachingProgram.action"
 )
 
 rosidl_generate_interfaces(${PROJECT_NAME}
@@ -27,6 +36,10 @@ rosidl_generate_interfaces(${PROJECT_NAME}
   ${srv_files}
   ${action_files}
   DEPENDENCIES builtin_interfaces
+)
+
+install(FILES README.md
+  DESTINATION share/${PROJECT_NAME}
 )
 
 ament_export_dependencies(rosidl_default_runtime)

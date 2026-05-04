@@ -1,0 +1,25 @@
+string mode
+string pipeline
+string target_class
+bool dry_run
+bool use_click
+bool use_bbox
+bool use_hsv
+bool use_depth
+float32 u
+float32 v
+float32 x1
+float32 y1
+float32 x2
+float32 y2
+float32 z_offset_m
+float32 approach_height_m
+float32 grasp_depth_m
+float32[] pre_grasp_rpy
+string options_json
+---
+bool success
+string message
+float32[] target_xyz
+float32[] target_rpy
+string result_json

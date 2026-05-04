@@ -4,10 +4,13 @@ import json
 import math
 import os
 import sys
+import types
 from pathlib import Path
-from typing import Any, List, Sequence
+from typing import Any, Callable, List, Sequence
 
 from control_msgs.action import FollowJointTrajectory
+import rclpy
+from rclpy.executors import Executor
 from rclpy.duration import Duration
 from trajectory_msgs.msg import JointTrajectoryPoint
 
@@ -23,20 +26,43 @@ DEFAULT_JOINT_NAMES = [
 
 
 def prepare_sdk_import(sdk_root: str) -> None:
+    _install_optional_dependency_stubs()
     sdk_root = (sdk_root or "").strip()
     if not sdk_root:
         return
     sdk_path = Path(sdk_root).expanduser().resolve()
     if not sdk_path.is_dir():
         return
-    candidate_paths = [sdk_path, sdk_path / "Embodied_SDK"]
+    candidate_paths = [
+        sdk_path,
+        sdk_path / "Embodied_SDK",
+        sdk_path / "Embodied_SDK" / "Horizon_Core",
+    ]
     if sdk_path.name == "Embodied_SDK":
         candidate_paths.append(sdk_path.parent)
+        candidate_paths.append(sdk_path / "Horizon_Core")
     for candidate in candidate_paths:
         if candidate.is_dir():
             candidate_str = str(candidate)
             if candidate_str not in sys.path:
                 sys.path.insert(0, candidate_str)
+    config_dir = sdk_path / "config"
+    aisdk_config = config_dir / "aisdk_config.yaml"
+    if config_dir.is_dir():
+        os.environ.setdefault("HORIZONARM_CONFIG_DIR", str(config_dir))
+    if aisdk_config.is_file():
+        os.environ.setdefault("AISDK_CONFIG_PATH", str(aisdk_config))
+
+
+def _install_optional_dependency_stubs() -> None:
+    if "dotenv" not in sys.modules:
+        dotenv_module = types.ModuleType("dotenv")
+
+        def _load_dotenv(*args, **kwargs):
+            return False
+
+        dotenv_module.load_dotenv = _load_dotenv
+        sys.modules["dotenv"] = dotenv_module
 
 
 def resolve_preset_config_path(explicit_path: str) -> str:
@@ -196,3 +222,30 @@ def _parse_bool_text(value: str) -> bool:
     if normalized in ("0", "false", "off", "low", "no", "n"):
         return False
     raise ValueError(f"cannot parse boolean value: {value}")
+
+
+def spin_node_until_shutdown(
+    node,
+    spin: Callable[[], None],
+    *,
+    executor: Executor | None = None,
+) -> None:
+    try:
+        spin()
+    except (KeyboardInterrupt, rclpy.executors.ExternalShutdownException):
+        pass
+    finally:
+        if executor is not None:
+            try:
+                executor.shutdown()
+            except Exception:
+                pass
+        try:
+            node.destroy_node()
+        except Exception:
+            pass
+        if rclpy.ok():
+            try:
+                rclpy.shutdown()
+            except Exception:
+                pass

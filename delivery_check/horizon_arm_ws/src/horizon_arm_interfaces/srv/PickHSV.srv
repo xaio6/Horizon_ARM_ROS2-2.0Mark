@@ -1,0 +1,19 @@
+float32 u
+float32 v
+int32 window_size
+bool use_depth_filter
+float32 depth_min_m
+float32 depth_max_m
+---
+bool success
+int32 h
+int32 s
+int32 v
+int32 h_min
+int32 h_max
+int32 s_min
+int32 s_max
+int32 v_min
+int32 v_max
+float32 depth_m
+string message

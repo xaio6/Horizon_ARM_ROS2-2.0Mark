@@ -1,0 +1,22 @@
+string command
+string pipeline
+string target_class
+float32 conf_thres
+float32 iou_thres
+float32 interval_sec
+int32 hsv_h_min
+int32 hsv_h_max
+int32 hsv_s_min
+int32 hsv_s_max
+int32 hsv_v_min
+int32 hsv_v_max
+float32 depth_min_m
+float32 depth_max_m
+float32 pixel_to_mm_scale
+string model_path
+string camera_name
+string options_json
+---
+bool success
+string message
+string config_json

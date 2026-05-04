@@ -9,6 +9,7 @@ setup(
     data_files=[
         ("share/ament_index/resource_index/packages", [f"resource/{package_name}"]),
         (f"share/{package_name}", ["package.xml"]),
+        (f"share/{package_name}", ["README.md"]),
         (f"share/{package_name}/config", ["config/horizon_arm_v2.yaml"]),
     ],
     install_requires=["setuptools", "PyYAML"],
@@ -23,4 +24,3 @@ setup(
         ],
     },
 )
-

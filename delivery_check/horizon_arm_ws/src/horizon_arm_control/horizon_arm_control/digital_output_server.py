@@ -6,7 +6,7 @@ import rclpy
 from horizon_arm_interfaces.srv import SetDigitalOutput
 from rclpy.node import Node
 
-from .common import prepare_sdk_import
+from .common import prepare_sdk_import, spin_node_until_shutdown
 
 
 class DigitalOutputServer(Node):
@@ -86,11 +86,7 @@ class DigitalOutputServer(Node):
 def main(args=None) -> None:
     rclpy.init(args=args)
     node = DigitalOutputServer()
-    try:
-        rclpy.spin(node)
-    finally:
-        node.destroy_node()
-        rclpy.shutdown()
+    spin_node_until_shutdown(node, lambda: rclpy.spin(node))
 
 
 if __name__ == "__main__":

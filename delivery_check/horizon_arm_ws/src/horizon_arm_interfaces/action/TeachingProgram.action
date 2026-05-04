@@ -1,0 +1,16 @@
+string command
+string program_name
+string program_path
+string program_json
+bool use_saved_params
+bool dry_run
+---
+bool success
+string message
+string result_json
+---
+int32 current_index
+int32 total
+float32 progress
+string stage
+string detail

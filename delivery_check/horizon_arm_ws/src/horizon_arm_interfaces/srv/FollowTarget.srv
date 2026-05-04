@@ -1,0 +1,18 @@
+string command
+string mode
+string pipeline
+string target_class
+float32 conf_thres
+float32 interval_sec
+float32 follow_distance_m
+float32 deadband_px
+float32 max_linear_speed
+float32 max_angular_speed
+bool use_depth
+bool auto_grasp
+string options_json
+---
+bool success
+bool running
+string message
+string state_json

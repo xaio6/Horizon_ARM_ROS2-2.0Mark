@@ -1,0 +1,11 @@
+string command
+string instruction
+bool stream
+string provider
+string model
+string control_mode
+string options_json
+---
+bool success
+string message
+string result_json

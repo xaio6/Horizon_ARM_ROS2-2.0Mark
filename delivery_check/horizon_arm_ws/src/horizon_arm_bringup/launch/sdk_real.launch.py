@@ -96,6 +96,14 @@ def generate_launch_description():
         parameters=[{"sdk_root": sdk_root}],
     )
 
+    teaching_server = Node(
+        package="horizon_arm_control",
+        executable="teaching_server",
+        name="horizon_arm_teaching_server",
+        output="screen",
+        parameters=[{"sdk_root": sdk_root}],
+    )
+
     return LaunchDescription(
         [
             DeclareLaunchArgument("sdk_root", default_value=""),
@@ -112,6 +120,7 @@ def generate_launch_description():
             visual_grasp_server,
             follow_grasp_server,
             joycon_server,
+            teaching_server,
             embodied_server,
         ]
     )

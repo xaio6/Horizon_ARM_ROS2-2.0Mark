@@ -1,0 +1,24 @@
+string command
+string frame
+string axis
+int32 joint_index
+float32 delta
+float32[] joint_angles
+float32[] position
+float32[] orientation
+string interpolation_type
+float32 max_speed
+float32 acceleration
+float32 deceleration
+float32 linear_velocity
+float32 angular_velocity
+float32 linear_acceleration
+float32 angular_acceleration
+float32[] joint_max_velocities
+float32[] joint_max_accelerations
+bool dry_run
+---
+bool success
+string message
+float32[] target_joint_angles
+string detail_json

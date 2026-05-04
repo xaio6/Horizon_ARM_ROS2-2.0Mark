@@ -8,7 +8,12 @@ import yaml
 import logging
 from typing import Dict, Any, Optional, Union
 from pathlib import Path
-from dotenv import load_dotenv
+
+try:
+    from dotenv import load_dotenv
+except Exception:
+    def load_dotenv(*args, **kwargs):
+        return False
 
 class Config:
     """配置管理类 - 支持YAML配置文件"""
@@ -301,4 +306,4 @@ class Config:
                 if not models:
                     warnings.append(f"没有配置模型: {provider}.{service}")
         
-        return {'errors': errors, 'warnings': warnings} 
+        return {'errors': errors, 'warnings': warnings}

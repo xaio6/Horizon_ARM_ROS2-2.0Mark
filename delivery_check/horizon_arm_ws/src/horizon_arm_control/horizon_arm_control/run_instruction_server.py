@@ -19,6 +19,7 @@ from .common import (
     build_trajectory_goal_rad,
     load_preset_config,
     parse_instruction_text,
+    spin_node_until_shutdown,
 )
 
 
@@ -327,12 +328,7 @@ def main(args=None) -> None:
     node = RunInstructionServer()
     executor = MultiThreadedExecutor(num_threads=4)
     executor.add_node(node)
-    try:
-        executor.spin()
-    finally:
-        executor.shutdown()
-        node.destroy_node()
-        rclpy.shutdown()
+    spin_node_until_shutdown(node, executor.spin, executor=executor)
 
 
 if __name__ == "__main__":
