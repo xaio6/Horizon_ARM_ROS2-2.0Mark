@@ -34,18 +34,18 @@ export HORIZON_IO_PORT="/dev/ttyUSB0"
 
 | 文档 | 读者 | 内容 |
 |---|---|---|
-| [部署说明](./docs/部署说明.md) | 现场部署、验收人员 | 环境、编译、启动、验收、故障处理 |
-| [ROS2 SDK 开发接口说明](./docs/05_ROS2_SDK开发接口.md) | 二次开发人员 | topic/service/action/Python SDK 字段级说明 |
-| [核心功能教学开发指南](./docs/Horizon_ARM_ROS2_2.0核心功能教学开发指南.md) | 教学、演示、联调人员 | 每个功能的输入、输出、例子和预期结果 |
+| [部署说明](./delivery_check/horizon_arm_ws/docs/部署说明.md) | 现场部署、验收人员 | 环境、编译、启动、验收、故障处理 |
+| [ROS2 SDK 开发接口说明](./delivery_check/horizon_arm_ws/docs/05_ROS2_SDK开发接口.md) | 二次开发人员 | topic/service/action/Python SDK 字段级说明 |
+| [核心功能教学开发指南](./delivery_check/horizon_arm_ws/docs/Horizon_ARM_ROS2_2.0核心功能教学开发指南.md) | 教学、演示、联调人员 | 每个功能的输入、输出、例子和预期结果 |
 
 包级说明：
 
 | 包 | 说明 |
 |---|---|
-| [horizon_arm_bringup](./src/horizon_arm_bringup/README.md) | launch、验收脚本、启动入口 |
-| [horizon_arm_control](./src/horizon_arm_control/README.md) | 高层控制服务和 Python SDK |
-| [horizon_arm_driver](./src/horizon_arm_driver/README.md) | 真实硬件驱动 |
-| [horizon_arm_interfaces](./src/horizon_arm_interfaces/README.md) | 自定义 msg/srv/action |
+| [horizon_arm_bringup](./delivery_check/horizon_arm_ws/src/horizon_arm_bringup/README.md) | launch、验收脚本、启动入口 |
+| [horizon_arm_control](./delivery_check/horizon_arm_ws/src/horizon_arm_control/README.md) | 高层控制服务和 Python SDK |
+| [horizon_arm_driver](./delivery_check/horizon_arm_ws/src/horizon_arm_driver/README.md) | 真实硬件驱动 |
+| [horizon_arm_interfaces](./delivery_check/horizon_arm_ws/src/horizon_arm_interfaces/README.md) | 自定义 msg/srv/action |
 
 ## 2. 首次编译
 
@@ -170,7 +170,7 @@ ros2 service call /horizon_arm/visual_grasp_ex horizon_arm_interfaces/srv/Visual
 '{mode: "click", pipeline: "click", dry_run: true, use_click: true, use_depth: true, u: 320.0, v: 240.0}'
 ```
 
-更多输入、输出和预期结果见 [核心功能教学开发指南](./docs/Horizon_ARM_ROS2_2.0核心功能教学开发指南.md)。
+更多输入、输出和预期结果见 [核心功能教学开发指南](./delivery_check/horizon_arm_ws/docs/Horizon_ARM_ROS2_2.0核心功能教学开发指南.md)。
 
 ## 6. 常见问题
 
